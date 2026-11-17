@@ -1,0 +1,6 @@
+# Ignore Spring config and Docker Compose files across all services
+**/application.properties
+**/application.yml
+docker-compose.yml
+.DS_Store
+**/.DS_Store

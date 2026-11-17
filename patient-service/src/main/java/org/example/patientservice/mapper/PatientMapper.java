@@ -1,0 +1,28 @@
+package org.example.patientservice.mapper;
+
+import org.example.patientservice.dto.PatientRequestDTO;
+import org.example.patientservice.dto.PatientResponseDTO;
+import org.example.patientservice.model.Patient;
+
+import java.time.LocalDate;
+
+public class PatientMapper {
+    public static PatientResponseDTO toDTO(Patient patient){
+        PatientResponseDTO patientDTO = new PatientResponseDTO();
+        patientDTO.setId(patient.getId().toString());
+        patientDTO.setName(patient.getName());
+        patientDTO.setAddress(patient.getAddress());
+        patientDTO.setDateOfBirth(patient.getDateOfBirth().toString());
+        patientDTO.setEmail(patient.getEmail());
+        return patientDTO;
+    }
+    public static Patient toModel(PatientRequestDTO patientRequestDTO){
+        Patient patient = new Patient();
+        patient.setName(patientRequestDTO.getName());
+        patient.setAddress(patientRequestDTO.getAddress());
+        patient.setDateOfBirth(LocalDate.parse(patientRequestDTO.getDateOfBirth()));
+        patient.setEmail(patientRequestDTO.getEmail());
+        patient.setRegisteredDate(LocalDate.parse(patientRequestDTO.getRegisteredDate()));
+        return patient;
+    }
+}
